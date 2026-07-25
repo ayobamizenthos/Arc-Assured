@@ -52,16 +52,16 @@ const Navigation = () => {
         animate={{ y: isVisible ? 0 : -200 }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="container-luxury py-4 md:py-6">
+        <div className="container-luxury py-2 md:py-3">
           <div className="flex items-center justify-between">
             <Link
               to="/"
-              className="mix-blend-difference group"
+              className="mix-blend-difference group flex-1"
               data-cursor="link"
               aria-label={`${FIRM_NAME_LEAD} ${FIRM_NAME_TRAIL} — home`}
             >
-              <span className="md:hidden font-sans font-semibold text-2xl tracking-[0.15em] uppercase text-white">
-                {FIRM_MONOGRAM}
+              <span className="md:hidden font-sans font-medium text-[11px] tracking-[0.2em] uppercase text-white">
+                {FIRM_NAME_LEAD}
               </span>
 
               <div className="hidden md:flex items-baseline gap-2">
