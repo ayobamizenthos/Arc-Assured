@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer
       ref={containerRef}
-      className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-black border-t border-gold/20 overflow-hidden rounded-t-[4rem]"
+      className="relative py-12 md:py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-black border-t border-gold/20 overflow-hidden rounded-t-[4rem]"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -30,7 +30,7 @@ const Footer = () => {
       <div className="container-luxury relative z-10">
         {/* Main Footer Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-20 md:mb-32"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-12 md:mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, staggerChildren: 0.1 }}
@@ -166,32 +166,9 @@ const Footer = () => {
           </motion.div>
         </motion.div>
 
-        {/* Call to Action */}
-        <motion.div
-          className="text-center mb-20 md:mb-32"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <h3 className="text-2xl md:text-3xl font-serif font-light text-white mb-6">
-            Ready to Transform Your Vision?
-          </h3>
-          <p className="text-white/70 mb-8 max-w-2xl mx-auto text-sm md:text-base">
-            Let's create something extraordinary together. Contact us to begin your architectural
-            journey.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gold via-yellow-500 to-gold bg-size-200 bg-pos-0 hover:bg-pos-100 text-black font-sans font-medium tracking-wider uppercase text-sm transition-all duration-500 rounded-sm hover:shadow-2xl hover:shadow-gold/25"
-            data-cursor="link"
-          >
-            Start Your Project
-          </Link>
-        </motion.div>
-
         {/* Massive Logo */}
         <motion.div
-          className="overflow-hidden mb-16 md:mb-20"
+          className="overflow-hidden"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 0.8 }}
@@ -204,21 +181,6 @@ const Footer = () => {
           >
             {FIRM_NAME}
           </motion.h2>
-        </motion.div>
-
-        {/* Bottom Bar */}
-        <motion.div
-          className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/10"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 1 }}
-        >
-          <span className="text-xs uppercase tracking-[0.2em] text-white/50 font-sans">
-            © {new Date().getFullYear()} {FIRM_NAME}. All rights reserved.
-          </span>
-          <span className="text-xs uppercase tracking-[0.2em] text-white/50 font-sans">
-            Lagos, Nigeria
-          </span>
         </motion.div>
       </div>
     </footer>
