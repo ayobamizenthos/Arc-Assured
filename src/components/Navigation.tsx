@@ -41,7 +41,7 @@ const Navigation = () => {
     <>
       {/* Fixed Header with Hide on Scroll */}
       <motion.header
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 safe-top"
+        className="fixed top-4 left-4 right-4 md:left-8 md:right-8 z-50 rounded-full transition-all duration-500 safe-top"
         style={{
           backdropFilter: `blur(${scrollProgress * 10}px)`,
           backgroundColor:

@@ -20,7 +20,7 @@ const Footer = () => {
   return (
     <footer
       ref={containerRef}
-      className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-black border-t border-gold/20 overflow-hidden"
+      className="relative py-20 md:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-black border-t border-gold/20 overflow-hidden rounded-t-3xl"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
