@@ -1,0 +1,585 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ========== BILLION DOLLAR DESIGN SYSTEM ========== */
+    /* Warm Stone - NOT pure white */
+    --background: 50 33% 95%;
+    --foreground: 0 0% 10%;
+
+    --card: 50 25% 93%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 50 33% 95%;
+    --popover-foreground: 0 0% 10%;
+
+    /* Antique Bronze — deepened for legible text on the light background */
+    --primary: 36 44% 37%;
+    --primary-foreground: 50 33% 96%;
+
+    --secondary: 50 20% 90%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 50 15% 88%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 38 35% 62%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 50 15% 82%;
+    --input: 50 15% 82%;
+    --ring: 38 35% 62%;
+
+    --radius: 0rem;
+
+    /* Custom Design Tokens - Billion Dollar Aesthetic */
+    --warm-stone: 50 33% 95%;
+    --deep-charcoal: 0 0% 10%;
+    --antique-bronze: 38 35% 62%;
+    --cream: 50 25% 93%;
+
+    /* Typography - Minale + Mann Stack */
+    --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --font-primary: var(--font-sans);
+
+    /* Luxury Transitions */
+    --transition-luxury: all 1s cubic-bezier(0.76, 0, 0.24, 1);
+    --transition-smooth: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+    --sidebar-background: 50 33% 95%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 0 0% 10%;
+    --sidebar-primary-foreground: 50 33% 95%;
+    --sidebar-accent: 50 20% 90%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 50 15% 82%;
+    --sidebar-ring: 38 35% 62%;
+  }
+
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 50 20% 92%;
+    --card: 0 0% 8%;
+    --card-foreground: 50 20% 92%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 50 20% 92%;
+    --primary: 38 35% 62%;
+    --primary-foreground: 0 0% 6%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 50 20% 92%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 50 15% 55%;
+    --accent: 38 35% 62%;
+    --accent-foreground: 0 0% 6%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 50 20% 92%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 38 35% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Visible keyboard focus (mouse users keep the custom-cursor experience). */
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+    /* Fluid root sizing: the desktop layout scales down proportionally below 1440px
+       (every rem-based size shrinks with it) and holds a readable floor on phones. */
+    font-size: clamp(13px, 1.1111vw, 16px);
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* Headlines - Manrope Uppercase with wide tracking */
+  h1 {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  /* Mobile-first touch optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+}
+
+@layer components {
+  /* ========== MINALE + MANN TYPOGRAPHY SYSTEM ========== */
+
+  /* Serif - Cormorant Garamond for body/elegant text */
+  .text-serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+  }
+
+  /* Sans - Manrope for headers/labels */
+  .text-sans {
+    font-family: var(--font-sans);
+    font-weight: 500;
+  }
+
+  /* Serif Italic - For emphasis */
+  .text-serif-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* ========== THE 'LABEL' TEXT ========== */
+  /* e.g., 'RESIDENTIAL', 'CONSERVATION...' */
+  .text-label {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.8125rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    @apply text-foreground;
+  }
+
+  /* ========== THE 'HEADLINE' TEXT ========== */
+  /* e.g., 'CONSERVATION & HERITAGE DESIGN' - Massive, Bold, Visible */
+  .text-hero {
+    font-family: var(--font-sans);
+    font-size: clamp(3rem, 12vw, 7rem);
+    line-height: 1.05;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .text-headline {
+    font-family: var(--font-sans);
+    font-size: clamp(2.5rem, 9vw, 5rem);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  /* Section Headers */
+  .text-section {
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 7vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .text-section-italic {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 7vw, 4rem);
+    line-height: 1.1;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  /* ========== THE 'BODY' TEXT ========== */
+  /* Large elegant serif body - VISIBLE on both light/dark backgrounds */
+  .text-body-luxury {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    line-height: 1.65;
+    font-weight: 400;
+    @apply text-muted-foreground;
+  }
+
+  .text-body {
+    font-family: var(--font-serif);
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    line-height: 1.65;
+    font-weight: 400;
+    @apply text-foreground;
+  }
+
+  /* Caption - Manrope Uppercase EXTREME Tracking */
+  .text-caption-luxury {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    @apply text-muted-foreground;
+  }
+
+  .text-caption {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  /* ========== LAYOUT CONTAINERS ========== */
+  .container-luxury {
+    @apply w-full mx-auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .container-luxury {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-luxury {
+      padding-left: 6rem;
+      padding-right: 6rem;
+      max-width: 1800px;
+    }
+  }
+
+  .container-wide {
+    @apply w-full mx-auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    max-width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .container-wide {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-wide {
+      padding-left: 6rem;
+      padding-right: 6rem;
+      max-width: 1920px;
+    }
+  }
+
+  .section-spacing {
+    padding-top: 7.5rem;
+    padding-bottom: 7.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-spacing {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-spacing {
+      padding-top: 7.5rem;
+      padding-bottom: 7.5rem;
+    }
+  }
+
+  /* ========== LUXURY ANIMATIONS ========== */
+
+  /* Magnetic Link Effect */
+  .link-magnetic {
+    @apply relative inline-block;
+    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .link-magnetic::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-primary;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .link-magnetic:hover::after,
+  .link-magnetic:focus::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Bronze Accent Line */
+  .accent-line-luxury {
+    @apply h-px bg-primary/40;
+    width: 30%;
+    margin: 0 auto;
+  }
+
+  /* Image Container - Luxury */
+  .image-luxury {
+    @apply relative overflow-hidden;
+    will-change: transform;
+  }
+
+  .image-luxury img {
+    @apply w-full h-full object-cover;
+    transform: scale(1.1);
+    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+    will-change: transform;
+  }
+
+  .image-luxury:hover img,
+  .image-luxury.in-view img {
+    transform: scale(1);
+  }
+
+  /* Grayscale Reveal */
+  .grayscale-luxury {
+    filter: grayscale(100%);
+    transition: filter 1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .grayscale-luxury:hover {
+    filter: grayscale(0%);
+  }
+
+  /* ========== BUTTON STYLES ========== */
+  .btn-luxury {
+    @apply inline-flex items-center justify-center;
+    @apply px-8 py-4;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 500;
+    @apply border border-foreground/20 bg-transparent text-foreground;
+    transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .btn-luxury:hover {
+    @apply bg-foreground text-background;
+  }
+
+  /* ========== MASONRY LAYOUT ========== */
+  .masonry-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .masonry-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    .masonry-col-2 {
+      margin-top: 12.5rem;
+    }
+  }
+
+  /* ========== OVERLAP STYLES ========== */
+  .overlap-container {
+    @apply relative;
+  }
+
+  .overlap-image {
+    @apply absolute;
+    top: -3rem;
+    right: -2rem;
+    width: 45%;
+    z-index: 10;
+  }
+
+  .overlap-button {
+    @apply absolute;
+    bottom: -2rem;
+    left: -2rem;
+    z-index: 10;
+  }
+
+  /* ========== JOURNAL LIST ========== */
+  .journal-row {
+    @apply py-8 border-b;
+    border-color: hsl(var(--primary) / 0.2);
+    transition: background 1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .journal-row:hover {
+    @apply bg-secondary/50;
+  }
+
+  /* ========== FILTER STYLES ========== */
+  .filter-btn {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    @apply text-muted-foreground;
+    transition: color 1s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .filter-btn:hover,
+  .filter-btn.active {
+    @apply text-foreground;
+  }
+
+  /* ========== NUMBER DISPLAY ========== */
+  .number-display {
+    font-family: var(--font-serif);
+    font-size: clamp(4rem, 15vw, 10rem);
+    line-height: 1;
+    font-weight: 300;
+    @apply text-foreground/5;
+  }
+}
+
+@layer utilities {
+  /* ========== KEYFRAMES ========== */
+
+  @keyframes curtain-reveal {
+    from {
+      clip-path: inset(100% 0 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .animate-curtain {
+    animation: curtain-reveal 1.4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  @keyframes luxury-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(80px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-luxury-fade-up {
+    animation: luxury-fade-up 1.2s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  @keyframes scale-settle {
+    from {
+      transform: scale(1.1);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .animate-scale-settle {
+    animation: scale-settle 1.4s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  /* Stagger Animation Delays */
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+  .stagger-5 {
+    animation-delay: 0.5s;
+  }
+  .stagger-6 {
+    animation-delay: 0.6s;
+  }
+
+  /* Touch-friendly tap targets */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Safe area for mobile */
+  .safe-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .safe-x {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
+
+  .h-screen-safe {
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .min-h-screen-safe {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
