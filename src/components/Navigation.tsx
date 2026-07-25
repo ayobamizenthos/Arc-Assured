@@ -41,11 +41,10 @@ const Navigation = () => {
     <>
       {/* Fixed Header with Hide on Scroll */}
       <motion.header
-        className="fixed top-4 left-4 right-4 md:left-8 md:right-8 z-50 rounded-full transition-all duration-500 safe-top"
+        className="fixed top-4 left-4 right-4 md:left-8 md:right-8 z-50 rounded-full transition-all duration-500 safe-top bg-gradient-to-br from-slate-900 via-slate-800 to-black"
         style={{
           backdropFilter: `blur(${scrollProgress * 10}px)`,
-          backgroundColor:
-            scrollProgress > 0 ? `rgba(0,0,0,${scrollProgress * 0.9})` : 'transparent',
+          backgroundColor: `rgba(0,0,0,${scrollProgress * 0.1})`,
           boxShadow: scrollProgress > 0 ? '0 2px 10px rgba(0,0,0,0.1)' : 'none',
           borderBottom: scrollProgress > 0.5 ? '1px solid rgba(255,255,255,0.1)' : 'none',
         }}
