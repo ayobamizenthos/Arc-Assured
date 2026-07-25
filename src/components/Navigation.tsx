@@ -50,7 +50,7 @@ const Navigation = () => {
           borderBottom: scrollProgress > 0.5 ? '1px solid rgba(255,255,255,0.1)' : 'none',
         }}
         initial={{ y: 0 }}
-        animate={{ y: isVisible ? 0 : -100 }}
+        animate={{ y: isVisible ? 0 : -200 }}
         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="container-luxury py-4 md:py-6">
